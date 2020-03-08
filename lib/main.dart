@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
 
-void main() => runApp(MaterialApp(
-  home: HomePage(),
-));
+import 'screens/search_screen.dart';
 
-class HomePage extends StatelessWidget {
+import 'utils/primary_color.dart';
+
+
+void main() => runApp(Weather());
+
+class Weather extends StatelessWidget {
+  final MaterialColor customColor = MaterialColor(0xFF626262, color);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueGrey[100],
-      appBar: AppBar(
-        title: Text("WeatherApp"),
-        backgroundColor: Colors.blueGrey[900],
+    return BlocProvider(
+      child: MaterialApp(
+        title: 'Weather',
+        theme: ThemeData(
+          primarySwatch: customColor,
+        ),
+        home: SearchScreen(),
       ),
     );
   }
