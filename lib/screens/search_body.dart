@@ -37,7 +37,7 @@ class _SearchBodyState extends State<SearchBody> {
                     width: 320.0,
                     child: LocalizationTextField(textController: _textController),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 40.0),
                   SearchButton(),
                 ],
               ),
