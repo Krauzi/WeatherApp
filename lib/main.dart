@@ -38,7 +38,7 @@ class Weather extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: customColor,
         ),
-        home: SearchScreen(),
+        home: WeatherDetailsScreen(),
       ),
     );
   }

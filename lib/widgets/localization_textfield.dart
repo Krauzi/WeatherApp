@@ -10,12 +10,13 @@ class LocalizationTextField extends StatelessWidget {
     return TextFormField(
       controller: textController,
       style: TextStyle(
-        color: Colors.grey[900],
-        fontSize: 20.0,
+          color: Colors.grey[900],
+          fontSize: 20.0,
+          fontFamily: 'Roboto'
       ),
       decoration: InputDecoration(
         hintText: 'Lokalizacja',
-        hintStyle: TextStyle(fontSize: 20.0, color: Colors.grey[600]),
+        hintStyle: TextStyle(fontSize: 20.0, color: Colors.grey[600], fontFamily: 'Roboto'),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),

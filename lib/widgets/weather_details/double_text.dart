@@ -34,8 +34,8 @@ class DoubleText extends StatelessWidget {
           SizedBox(height: 3),
           Text(value, style: TextStyle(
               fontSize: fontSizeSecondary,
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Oswald',
               shadows: [
                 Shadow(
                   blurRadius: 7.0,

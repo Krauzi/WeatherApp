@@ -14,10 +14,10 @@ class DetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        DoubleText(firstField, firstValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w800),
-        DoubleText(secondField, secondValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w800),
+        DoubleText(firstField, firstValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400),
+        DoubleText(secondField, secondValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400),
       ],
     );
   }

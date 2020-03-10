@@ -25,16 +25,26 @@ class WeatherDetailsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                SizedBox(height: 66),
-                DoubleText("Gliwice", "12:41, 9 marzec 2020", 0, 54.0, 36.0, FontWeight.w800),
-                SizedBox(height: 48),
-                TemperatureDetailsRow(icon: '02d', fontSize: 48.0, temperature: 25, temperatureMax: 26, temperatureMin: 24),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(0, 0, 0, 0.2)
+                      //color: Color.fromRGBO(230, 230, 230, 0.1)
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 50),
+                      DoubleText("Gliwice", "12:41, 9 marzec 2020", 0, 48.0, 26.0, FontWeight.w400),
+                      SizedBox(height: 24),
+                      TemperatureDetailsRow(icon: '02d', fontSize: 48.0, temperature: 25, temperatureMax: 26, temperatureMin: 24),
+                    ],
+                  ),
+                ),
                 SizedBox(height: 28),
-                SingleText("Całkowite zachmurzenie", 32.0, FontWeight.w400),
+                SingleText("Całkowite zachmurzenie", 28.0, FontWeight.w400),
                 SizedBox(height: 48),
-                DetailsRow(22.0, 18.0, "Wschód słońca", "06:00", "Zachód słońca", "17:30"),
+                DetailsRow(20.0, 16.0, "Wschód słońca", "06:00", "Zachód słońca", "17:30"),
                 SizedBox(height: 26),
-                DetailsRow(22.0, 18.0, "Wilgotność", "68%", "Ciśnienie", "1024"),
+                DetailsRow(20.0, 16.0, "Wilgotność", "68%", "Ciśnienie", "1024"),
               ],
             ),
           )
@@ -63,41 +73,3 @@ class WeatherDetailsScreen extends StatelessWidget {
     ),
   );
 }
-
-
-//
-//  Widget _container(context) => Stack(
-//    children: <Widget>[
-//      Container(
-//        width: double.infinity,
-//        height: MediaQuery.of(context).size.longestSide * 0.3,
-//        alignment: Alignment.center,
-//        decoration: BoxDecoration(
-//            color: color[300],
-//        ),
-//        child: Column(
-//          children: <Widget>[
-//            Container(
-//              alignment: Alignment.center,
-//              width: 200.0,
-//              child: Image.asset('assets/weather_icons/01d.png'),
-//            ),
-//            Container(
-//              alignment: Alignment.center,
-//              height: 80.0,
-//              child: Text(
-//                'Gliwice',
-//                maxLines: 1,
-//                overflow: TextOverflow.ellipsis,
-//                style: TextStyle(
-//                    color: color[900],
-//                    fontSize: 24.0,
-//                    fontWeight: FontWeight.w500
-//                ),
-//              ),
-//            )
-//          ],
-//        ),
-//      )
-//    ],
-//  );
