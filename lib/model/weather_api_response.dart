@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weatherapp/model/weather_main.dart';
 import 'package:weatherapp/model/weather_sun.dart';
@@ -23,4 +26,7 @@ class WeatherApiResponse {
 
   factory WeatherApiResponse.fromJson(Map<String, dynamic> json) => _$WeatherApiResponseFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherApiResponseToJson(this);
+
+  String get formattedDayTime => DateFormat('H:mm, d.M.yyyy')
+      .format(DateTime.fromMillisecondsSinceEpoch(dt * 1000));
 }

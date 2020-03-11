@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/intl.dart';
 import 'package:weatherapp/blocs/weather_bloc.dart';
 import 'package:weatherapp/repositories/weather_repository.dart';
 import 'package:weatherapp/screens/weather_details_screen.dart';
@@ -38,7 +40,7 @@ class Weather extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: customColor,
         ),
-        home: WeatherDetailsScreen(),
+        home: SearchScreen(),
       ),
     );
   }

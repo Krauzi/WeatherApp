@@ -5,15 +5,12 @@ import '../weather_api_response.dart';
 
 part 'apiclient.g.dart';
 
-const String units = 'metric';
-final String language = 'pl';
-final String apiKey = 'x';
 
 final apiClient = ApiClient(Dio());
 
 @RestApi(baseUrl: 'https://api.openweathermap.org/data/2.5/')
 abstract class ApiClient {
-  factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
+  factory ApiClient(Dio dio) = _ApiClient;
 
   @GET("/weather")
   Future<WeatherApiResponse> getWeatherForCity(

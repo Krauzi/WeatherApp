@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:weatherapp/model/weather_api_response.dart';
 import 'package:weatherapp/widgets/weather_details/animated_wave.dart';
 import 'package:weatherapp/widgets/weather_details/details_row.dart';
 import 'package:weatherapp/widgets/weather_details/temperature_details_row.dart';
@@ -9,6 +11,10 @@ import 'package:weatherapp/widgets/weather_details/gradient_background.dart';
 import 'package:weatherapp/widgets/weather_details/single_text.dart';
 
 class WeatherDetailsScreen extends StatelessWidget {
+  final WeatherApiResponse weatherResponse;
+
+  WeatherDetailsScreen({this.weatherResponse});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +24,6 @@ class WeatherDetailsScreen extends StatelessWidget {
         onBottom(AnimatedWave(height: 180, speed: 1.0)),
         onBottom(AnimatedWave(height: 120, speed: 0.9, offset: pi)),
         onBottom(AnimatedWave(height: 220, speed: 1.2, offset: pi / 2)),
-          _navigateBack(context),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -33,21 +38,37 @@ class WeatherDetailsScreen extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 50),
-                      DoubleText("Gliwice", "12:41, 9 marzec 2020", 0, 48.0, 26.0, FontWeight.w400),
+                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 48.0, 26.0, FontWeight.w400),
                       SizedBox(height: 24),
-                      TemperatureDetailsRow(icon: '02d', fontSize: 48.0, temperature: 25, temperatureMax: 26, temperatureMin: 24),
+                      TemperatureDetailsRow(
+                          icon: weatherResponse.weather[0].icon,
+                          fontSize: 48.0,
+                          temperature: weatherResponse.main.temp.toStringAsFixed(1),
+                          temperatureMax: (weatherResponse.main.tempMax).toStringAsFixed(1),
+                          temperatureMin: (weatherResponse.main.tempMin).toStringAsFixed(1)
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(height: 28),
-                SingleText("Całkowite zachmurzenie", 28.0, FontWeight.w400),
+                SingleText(toBeginningOfSentenceCase(weatherResponse.weather[0].description),
+                    28.0, FontWeight.w400),
                 SizedBox(height: 48),
-                DetailsRow(20.0, 16.0, "Wschód słońca", "06:00", "Zachód słońca", "17:30"),
+                DetailsRow(
+                    20.0, 16.0,
+                    "Wschód słońca", weatherResponse.sun.formattedSunrise,
+                    "Zachód słońca", weatherResponse.sun.formattedSunset
+                ),
                 SizedBox(height: 26),
-                DetailsRow(20.0, 16.0, "Wilgotność", "68%", "Ciśnienie", "1024"),
+                DetailsRow(
+                    20.0, 16.0,
+                    "Wilgotność", '${weatherResponse.main.humidity}%',
+                    "Ciśnienie", '${weatherResponse.main.pressure}'
+                ),
               ],
             ),
-          )
+          ),
+          _navigateBack(context),
         ]
       ),
     );

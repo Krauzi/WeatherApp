@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class TemperatureDetailsRow extends StatelessWidget {
   final String icon;
   final double fontSize;
-  final int temperature;
-  final int temperatureMin;
-  final int temperatureMax;
+  final String temperature;
+  final String temperatureMin;
+  final String temperatureMax;
 
   TemperatureDetailsRow({this.icon, this.fontSize, this.temperature, this.temperatureMin, this.temperatureMax});
 
