@@ -20,53 +20,64 @@ class WeatherDetailsScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Positioned.fill(child: GradientBackground()),
+          Positioned.fill(child: Container (
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(34, 52, 57, 1)
+            ),
+          )),
         onBottom(AnimatedWave(height: 180, speed: 1.0)),
         onBottom(AnimatedWave(height: 120, speed: 0.9, offset: pi)),
         onBottom(AnimatedWave(height: 220, speed: 1.2, offset: pi / 2)),
-          SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(0, 0, 0, 0.2)
-                      //color: Color.fromRGBO(230, 230, 230, 0.1)
-                  ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(48, 82, 81, 0.9)
+                ),
+                child: SafeArea(
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 50),
-                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 48.0, 26.0, FontWeight.w400),
-                      SizedBox(height: 24),
-                      TemperatureDetailsRow(
-                          icon: weatherResponse.weather[0].icon,
-                          fontSize: 48.0,
-                          temperature: weatherResponse.main.temp.toStringAsFixed(1),
-                          temperatureMax: (weatherResponse.main.tempMax).toStringAsFixed(1),
-                          temperatureMin: (weatherResponse.main.tempMin).toStringAsFixed(1)
+                      SizedBox(height: 40),
+                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 48.0, 22.0, FontWeight.w400),
+                      SizedBox(height: 8),
+                      Container(
+                        child: TemperatureDetailsRow(
+                            icon: weatherResponse.weather[0].icon,
+                            fontSize: 48.0,
+                            temperature: weatherResponse.main.temp.toStringAsFixed(1),
+                            temperatureMax: (weatherResponse.main.tempMax).toStringAsFixed(1),
+                            temperatureMin: (weatherResponse.main.tempMin).toStringAsFixed(1)
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 28),
-                SingleText(toBeginningOfSentenceCase(weatherResponse.weather[0].description),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 24, bottom: 24),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(42, 64, 70, 0.9)
+                ),
+                child: SingleText(toBeginningOfSentenceCase(weatherResponse.weather[0].description),
                     28.0, FontWeight.w400),
-                SizedBox(height: 48),
-                DetailsRow(
-                    20.0, 16.0,
-                    "Wschód słońca", weatherResponse.sun.formattedSunrise,
-                    "Zachód słońca", weatherResponse.sun.formattedSunset
-                ),
-                SizedBox(height: 26),
-                DetailsRow(
-                    20.0, 16.0,
-                    "Wilgotność", '${weatherResponse.main.humidity}%',
-                    "Ciśnienie", '${weatherResponse.main.pressure}'
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: 12),
+              DetailsRow(
+                  20.0, 18.0,
+                  "Wschód słońca", weatherResponse.sun.formattedSunrise,
+                  "Zachód słońca", weatherResponse.sun.formattedSunset
+              ),
+              SizedBox(height: 26),
+              DetailsRow(
+                  20.0, 18.0,
+                  "Wilgotność", '${weatherResponse.main.humidity}%',
+                  "Ciśnienie", '${weatherResponse.main.pressure}'
+              ),
+            ],
           ),
           _navigateBack(context),
         ]

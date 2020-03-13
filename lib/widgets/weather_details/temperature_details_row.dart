@@ -12,42 +12,38 @@ class TemperatureDetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Image.asset('assets/weather_icons/$icon.png'),
-        Text('$temperature\u00b0C', style: TextStyle(
-          fontFamily: 'Roboto', fontSize: fontSize, color: Colors.grey[200],
-          shadows: [
-            Shadow(
-              blurRadius: 7.0,
-              color: Colors.grey[900],
-              offset: Offset(0.3, 0.3),
-            ),
-          ],
-        )),
-        Column(
-          children: <Widget>[
-            Text('max: $temperatureMax\u00b0C', style: TextStyle(
-                fontFamily: 'Roboto', fontSize: fontSize * 0.34, color: Colors.grey[200],
-                shadows: [
-                  Shadow(
-                    blurRadius: 7.0,
-                    color: Colors.grey[900],
-                    offset: Offset(0.3, 0.3),
-                  ),
-                ],
-            )),
-            Text('min: $temperatureMin\u00b0C', style: TextStyle(
-                fontFamily: 'Roboto', fontSize: fontSize * 0.34, color: Colors.grey[200],
-                shadows: [
-                  Shadow(
-                    blurRadius: 7.0,
-                    color: Colors.grey[900],
-                    offset: Offset(0.3, 0.3),
-                  ),
-                ],
-            ))
-          ],
+        Container(
+          padding: const EdgeInsets.only(bottom: 6),
+          decoration: new BoxDecoration(
+            color: Colors.pink[700],
+            shape: BoxShape.circle,
+          ),
+          child: Image.asset('assets/weather_icons/$icon.png'),
+        ),
+        Container(
+          padding: const EdgeInsets.only(top: 16),
+          child: Text('$temperature\u00b0C', style: TextStyle(
+            fontFamily: 'Roboto', fontSize: fontSize, color: Colors.grey[200],
+            shadows: [Shadow(blurRadius: 7.0, color: Colors.grey[900], offset: Offset(0.3, 0.3),),],
+          )),
+        ),
+        Container(
+          padding: const EdgeInsets.only(top: 26),
+          child: Column(
+            children: <Widget>[
+              Text('max: $temperatureMax\u00b0C', style: TextStyle(
+                  fontFamily: 'Roboto', fontSize: fontSize * 0.36, color: Colors.grey[200],
+                  shadows: [Shadow(blurRadius: 7.0, color: Colors.grey[900], offset: Offset(0.3, 0.3),),],
+              )),
+              Text('min: $temperatureMin\u00b0C', style: TextStyle(
+                  fontFamily: 'Roboto', fontSize: fontSize * 0.36, color: Colors.grey[200],
+                  shadows: [Shadow(blurRadius: 7.0, color: Colors.grey[900], offset: Offset(0.3, 0.3),),],
+              ))
+            ],
+          ),
         )
       ],
     );

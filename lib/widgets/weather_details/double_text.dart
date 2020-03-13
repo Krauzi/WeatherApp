@@ -29,13 +29,12 @@ class DoubleText extends StatelessWidget {
                   offset: Offset(0.3, 0.3),
                 ),
               ],
-              color: Colors.grey[200]
+              color: Color.fromRGBO(242, 175, 41, 1)
           )),
-          SizedBox(height: 3),
           Text(value, style: TextStyle(
               fontSize: fontSizeSecondary,
-              fontWeight: FontWeight.w300,
-              fontFamily: 'Oswald',
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Roboto',
               shadows: [
                 Shadow(
                   blurRadius: 7.0,

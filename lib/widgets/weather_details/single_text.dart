@@ -13,7 +13,7 @@ class SingleText extends StatelessWidget {
       value,
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontSize: fontSize, fontFamily: 'Oswald', fontWeight: fontWeight,
+          fontSize: fontSize, fontFamily: 'Roboto', fontWeight: fontWeight,
           shadows: [
             Shadow(
               blurRadius: 7.0,

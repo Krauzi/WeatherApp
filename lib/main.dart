@@ -36,6 +36,7 @@ class Weather extends StatelessWidget {
       blocs: _blocs,
       dependencies: _dependencies,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Weather',
         theme: ThemeData(
           primarySwatch: customColor,

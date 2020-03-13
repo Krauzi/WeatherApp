@@ -10,7 +10,7 @@ class LocalizationTextField extends StatelessWidget {
     return TextFormField(
       controller: textController,
       style: TextStyle(
-          color: Colors.grey[900],
+          color: Color.fromRGBO(28, 36, 51, 1),
           fontSize: 20.0,
           fontFamily: 'Roboto'
       ),
@@ -20,11 +20,11 @@ class LocalizationTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: Colors.grey[200],
+        fillColor: Color.fromRGBO(234, 234, 234, 1),
         filled: true,
         prefixIcon: Icon(
           Icons.location_on,
-          color: Colors.grey[900],
+          color: Color.fromRGBO(28, 36, 51, 1),
         ),
       ),
     );

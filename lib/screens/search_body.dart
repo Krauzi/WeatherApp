@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:toast/toast.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/blocs/weather_bloc.dart';
@@ -78,10 +79,11 @@ class _SearchBodyState extends State<SearchBody> {
           height: double.infinity,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.grey.withAlpha(100),
+            color: Color.fromRGBO(28, 36, 51, 1),
           ),
           child: SpinKitDoubleBounce(
-            color: Colors.red[600],
+            size: MediaQuery.of(context).size.shortestSide * 0.4,
+            color: Color.fromRGBO(218, 58, 71, 1),
           ),
         );
       } else {
@@ -94,8 +96,12 @@ class _SearchBodyState extends State<SearchBody> {
     if(_textController.text != null && _textController.text.length > 2) {
       _weatherBloc.getWeatherForCity(_textController.text);
     } else {
-      print("Error");
+      _showToast("Wpisz nazwę miejscowości");
     }
+  }
+
+  void _showToast(String mess) {
+    Toast.show(mess, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
   }
 
   void _goToDetails(WeatherApiResponse weather) {
