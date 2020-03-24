@@ -20,13 +20,15 @@ class WeatherApiResponse {
   WeatherSun sun;
   @JsonKey(name: 'name')
   String name;
+  @JsonKey(name: 'timezone')
+  int timezone;
 
   WeatherApiResponse(
-      {this.weather, this.main, this.dt, this.sun, this.name});
+      {this.weather, this.main, this.dt, this.sun, this.name, this.timezone});
 
   factory WeatherApiResponse.fromJson(Map<String, dynamic> json) => _$WeatherApiResponseFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherApiResponseToJson(this);
 
   String get formattedDayTime => DateFormat('H:mm, d.M.yyyy')
-      .format(DateTime.fromMillisecondsSinceEpoch(dt * 1000));
+      .format(DateTime.fromMillisecondsSinceEpoch((dt + timezone) * 1000).toUtc());
 }

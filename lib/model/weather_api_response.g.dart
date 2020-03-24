@@ -20,6 +20,7 @@ WeatherApiResponse _$WeatherApiResponseFromJson(Map<String, dynamic> json) {
         ? null
         : WeatherSun.fromJson(json['sys'] as Map<String, dynamic>),
     name: json['name'] as String,
+    timezone: json['timezone'] as int,
   );
 }
 
@@ -30,4 +31,5 @@ Map<String, dynamic> _$WeatherApiResponseToJson(WeatherApiResponse instance) =>
       'dt': instance.dt,
       'sys': instance.sun,
       'name': instance.name,
+      'timezone': instance.timezone
     };

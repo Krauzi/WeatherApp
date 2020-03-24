@@ -41,8 +41,8 @@ class WeatherDetailsScreen extends StatelessWidget {
                 child: SafeArea(
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 40),
-                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 48.0, 22.0, FontWeight.w400),
+                      SizedBox(height: 43),
+                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 40.0, 22.0, FontWeight.w400),
                       SizedBox(height: 8),
                       Container(
                         child: TemperatureDetailsRow(
@@ -68,8 +68,8 @@ class WeatherDetailsScreen extends StatelessWidget {
               SizedBox(height: 12),
               DetailsRow(
                   20.0, 18.0,
-                  "Wschód słońca", weatherResponse.sun.formattedSunrise,
-                  "Zachód słońca", weatherResponse.sun.formattedSunset
+                  "Wschód słońca", weatherResponse.sun.formattedSunrise(weatherResponse.timezone),
+                  "Zachód słońca", weatherResponse.sun.formattedSunset(weatherResponse.timezone)
               ),
               SizedBox(height: 26),
               DetailsRow(

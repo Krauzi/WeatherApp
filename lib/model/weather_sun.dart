@@ -15,8 +15,8 @@ class WeatherSun {
   factory WeatherSun.fromJson(Map<String, dynamic> json) => _$WeatherSunFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherSunToJson(this);
 
-  String get formattedSunrise => DateFormat('HH:mm')
-      .format(DateTime.fromMillisecondsSinceEpoch(sunrise * 1000));
-  String get formattedSunset => DateFormat('HH:mm')
-      .format(DateTime.fromMillisecondsSinceEpoch(sunset * 1000));
+  String formattedSunrise(int timezone) => DateFormat('HH:mm')
+      .format(DateTime.fromMillisecondsSinceEpoch((sunrise + timezone) * 1000).toUtc());
+  String formattedSunset(int timezone) => DateFormat('HH:mm')
+      .format(DateTime.fromMillisecondsSinceEpoch((sunset + timezone) * 1000).toUtc());
 }
