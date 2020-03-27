@@ -8,16 +8,17 @@ class DetailsRow extends StatelessWidget {
   final String firstValue;
   final String secondField;
   final String secondValue;
+  final Color fontColor;
 
-  DetailsRow(this.fontSizeMain, this.fontSizeSecondary, this.firstField, this.firstValue, this.secondField, this.secondValue);
+  DetailsRow(this.fontSizeMain, this.fontSizeSecondary, this.firstField, this.firstValue, this.secondField, this.secondValue, this.fontColor);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        DoubleText(firstField, firstValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400),
-        DoubleText(secondField, secondValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400),
+        DoubleText(firstField, firstValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400, fontColor),
+        DoubleText(secondField, secondValue, 0, fontSizeMain, fontSizeSecondary, FontWeight.w400, fontColor),
       ],
     );
   }

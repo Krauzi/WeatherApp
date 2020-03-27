@@ -9,6 +9,7 @@ import 'package:weatherapp/screens/weather_details_screen.dart';
 import 'package:weatherapp/widgets/localization_textfield.dart';
 import 'package:weatherapp/widgets/search_button.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:weatherapp/utils/details_palette.dart';
 
 class SearchBody extends StatefulWidget {
   @override
@@ -105,8 +106,9 @@ class _SearchBodyState extends State<SearchBody> {
   }
 
   void _goToDetails(WeatherApiResponse weather) {
+    List<Color> _colorList = colorPalette(weather.weather[0].id, weather.weather[0].icon);
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => WeatherDetailsScreen(weatherResponse: weather))
+        MaterialPageRoute(builder: (context) => WeatherDetailsScreen(weatherResponse: weather, colorList: _colorList))
     );
   }
 }

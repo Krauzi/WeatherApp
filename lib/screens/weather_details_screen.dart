@@ -7,13 +7,13 @@ import 'package:weatherapp/widgets/weather_details/animated_wave.dart';
 import 'package:weatherapp/widgets/weather_details/details_row.dart';
 import 'package:weatherapp/widgets/weather_details/temperature_details_row.dart';
 import 'package:weatherapp/widgets/weather_details/double_text.dart';
-import 'package:weatherapp/widgets/weather_details/gradient_background.dart';
 import 'package:weatherapp/widgets/weather_details/single_text.dart';
 
 class WeatherDetailsScreen extends StatelessWidget {
   final WeatherApiResponse weatherResponse;
+  final List<Color> colorList;
 
-  WeatherDetailsScreen({this.weatherResponse});
+  WeatherDetailsScreen({this.weatherResponse, this.colorList});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class WeatherDetailsScreen extends StatelessWidget {
         children: <Widget>[
           Positioned.fill(child: Container (
             decoration: BoxDecoration(
-              color: Color.fromRGBO(34, 52, 57, 1)
+              color: colorList[0]
             ),
           )),
         onBottom(AnimatedWave(height: 180, speed: 1.0)),
@@ -36,13 +36,13 @@ class WeatherDetailsScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(bottom: 8),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(48, 82, 81, 0.9)
+                  color: colorList[1]
                 ),
                 child: SafeArea(
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 43),
-                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 40.0, 22.0, FontWeight.w400),
+                      DoubleText(weatherResponse.name, weatherResponse.formattedDayTime, 0, 40.0, 22.0, FontWeight.w400, Color.fromRGBO(242, 175, 41, 1)),
                       SizedBox(height: 8),
                       Container(
                         child: TemperatureDetailsRow(
@@ -60,22 +60,24 @@ class WeatherDetailsScreen extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 24, bottom: 24),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(42, 64, 70, 0.9)
+                    color: colorList[2]
                 ),
                 child: SingleText(toBeginningOfSentenceCase(weatherResponse.weather[0].description),
                     28.0, FontWeight.w400),
               ),
               SizedBox(height: 12),
               DetailsRow(
-                  20.0, 18.0,
+                  20.0, 24.0,
                   "Wschód słońca", weatherResponse.sun.formattedSunrise(weatherResponse.timezone),
-                  "Zachód słońca", weatherResponse.sun.formattedSunset(weatherResponse.timezone)
+                  "Zachód słońca", weatherResponse.sun.formattedSunset(weatherResponse.timezone),
+                  Color.fromRGBO(242, 175, 41, 1)
               ),
               SizedBox(height: 26),
               DetailsRow(
-                  20.0, 18.0,
+                  20.0, 24.0,
                   "Wilgotność", '${weatherResponse.main.humidity}%',
-                  "Ciśnienie", '${weatherResponse.main.pressure}'
+                  "Ciśnienie", '${weatherResponse.main.pressure}',
+                  Color.fromRGBO(242, 175, 41, 1)
               ),
             ],
           ),

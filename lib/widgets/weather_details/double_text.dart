@@ -9,8 +9,9 @@ class DoubleText extends StatelessWidget {
   final double fontSizeMain;
   final double fontSizeSecondary;
   final FontWeight fontWeight;
+  final Color fontColor;
 
-  DoubleText(this.fieldName, this.value, this.flex, this.fontSizeMain, this.fontSizeSecondary, this.fontWeight);
+  DoubleText(this.fieldName, this.value, this.flex, this.fontSizeMain, this.fontSizeSecondary, this.fontWeight, this.fontColor);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class DoubleText extends StatelessWidget {
                   offset: Offset(0.3, 0.3),
                 ),
               ],
-              color: Color.fromRGBO(242, 175, 41, 1)
+              color: fontColor
           )),
           Text(value, style: TextStyle(
               fontSize: fontSizeSecondary,
